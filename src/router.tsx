@@ -4,7 +4,7 @@ import Home from "./pages";
 import Detail from "./pages/detail";
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
         <Route path={constants.home} element={<Home />} />
         <Route path={constants.detail} element={<Detail />} />
