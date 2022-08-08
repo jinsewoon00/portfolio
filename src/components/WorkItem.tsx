@@ -95,8 +95,6 @@ export function WorkItemBox(props: WorkItemBoxProps) {
 }
 
 function WorkItem(props: WorkItemProps) {
-  const ref = useRef<HTMLInputElement>(null);
-  console.dir(ref.current);
   return (
     <>
       <div css={WorkItemCss}>
@@ -120,14 +118,6 @@ function WorkItem(props: WorkItemProps) {
             </li>
           </ul>
         </div>
-        <input
-          ref={ref}
-          type="time"
-          step={900}
-          onChange={(e) => {
-            console.log(e.target.value);
-          }}
-        />
       </div>
     </>
   );
