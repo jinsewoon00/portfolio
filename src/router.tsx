@@ -4,8 +4,8 @@ import Home from "./pages";
 import Detail from "./pages/detail";
 function App() {
   return (
-    // <BrowserRouter basename={process.env.PUBLIC_URL}>
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
+      {/* <BrowserRouter> */}
       <Routes>
         <Route path={constants.home} element={<Home />} />
         <Route path={`/detail`} element={<Detail />} />
