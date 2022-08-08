@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -49,3 +50,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 # portfolio
 포트폴리오
 >>>>>>> ade3ba596ce07831d77380fb9453eba6e4a4c117
+=======
+# portfolio
+portfolio
+>>>>>>> bb64980bbfb876e1d6bedf1ce8a843d9bc66d92d
