@@ -36,8 +36,8 @@ const HeaderCss = css`
           top: -2px;
           left: 50%;
           transform: translateX(-50%);
-          width: 3px;
-          height: 3px;
+          width: 2px;
+          height: 2px;
           border-radius: 50%;
           background-color: #3c434b;
         }
@@ -62,10 +62,12 @@ function HeaderLayout() {
   return (
     <header css={HeaderCss}>
       <div className="headerInner">
-        <div className="logo">Portfolio</div>
+        <div className="logo">
+          <Link to="/">Portfolio</Link>{" "}
+        </div>
         <div className="menu">
           <Link to="/">Work</Link>
-          <Link to="/">Extra</Link>
+          {/* <Link to="/">Extra</Link> */}
         </div>
       </div>
     </header>

@@ -13,12 +13,12 @@ const MotionContainer = (props: Props) => {
         initial={{
           opacity: 0,
           filter: "blur(3px)",
-          transform: "translateX(-100vw)",
+          // transform: "translateX(-100vw)",
         }}
         animate={{
           opacity: 1,
           filter: "blur(0px)",
-          transform: "translateX(0vw)",
+          // transform: "translateX(0vw)",
         }}
         transition={{ duration: 0.5 }}
       >

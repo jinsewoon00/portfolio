@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { useRef } from "react";
+import { Link } from "react-router-dom";
 import WorkItemModel from "../model/workitem";
 import { mq } from "../styles/common";
 
@@ -10,37 +11,56 @@ interface WorkItemBoxProps {
 
 interface WorkItemProps {
   data: WorkItemModel;
+  index: number;
 }
 
 const WorkItemBoxCss = css`
   padding: 10rem 0rem;
   header {
     h1 {
-      margin-bottom: 8rem;
+      margin-bottom: 5rem;
     }
   }
   > div {
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 4rem 1rem;
   }
   ${mq[2]} {
     padding: 8rem 4rem;
   }
   ${mq[0]} {
-    padding: 8rem 0rem;
+    padding: 4rem 0rem;
     header {
       padding: 0 16px;
+      h1 {
+        margin-bottom: 2rem;
+      }
+    }
+    > div {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem 1rem;
     }
   }
 `;
 
 const WorkItemCss = css`
-  width: calc(50% - 1rem);
+  width: calc(50% - 0.5rem);
   .imgHolder {
     width: 100%;
     aspect-ratio: 16/9;
     background-color: red;
+    a {
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
   }
   .desc {
     h2 {
@@ -51,8 +71,10 @@ const WorkItemCss = css`
     ul {
       li {
         p {
+          display: flex;
+          align-items: center;
           font-size: 1.6rem;
-          line-height: 2;
+          line-height: 1.5;
           i {
             font-size: 2rem;
             margin-right: 6px;
@@ -60,10 +82,12 @@ const WorkItemCss = css`
           span {
             &:first-of-type {
               display: inline-block;
-              min-width: 8rem;
+              /* min-width: 8rem; */
+              margin-right: 8px;
             }
             &:last-of-type {
-              padding: 4px;
+              font-size: 1.2rem;
+              padding: 2px 8px;
               border-radius: 4px;
               background-color: #f2f2f2;
             }
@@ -76,7 +100,7 @@ const WorkItemCss = css`
   ${mq[0]} {
     width: 100%;
     .desc {
-      padding: 0 16px 30px;
+      padding: 0 16px 0px;
     }
   }
 `;
@@ -99,7 +123,9 @@ function WorkItem(props: WorkItemProps) {
     <>
       <div css={WorkItemCss}>
         <div className="imgHolder">
-          <img src={props.data.img} alt="" />
+          <Link to={`/detail/${props.data.id}&idx=${props.index}`}>
+            <img src={props.data.img} alt={props.data.title} />
+          </Link>
         </div>
         <div className="desc">
           <h2>{props.data.title}</h2>
