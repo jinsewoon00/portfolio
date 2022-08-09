@@ -50,7 +50,6 @@ const WorkItemCss = css`
   .imgHolder {
     width: 100%;
     aspect-ratio: 16/9;
-    background-color: red;
     a {
       width: 100%;
       height: 100%;
