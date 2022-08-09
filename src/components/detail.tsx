@@ -1,26 +1,52 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { mq } from "../styles/common";
-
+import PopupComponents from "./common/popup";
+// import vodaplayVideo from './video/vodaplay_play.mp4'
 interface Props {
   data: {
     id: string;
     desc: string;
+    img?: string;
     link?: string;
+    video?: string;
     tag: string[];
   };
+  onClickPopup: () => void;
 }
 const WorkItemDescCss = css`
   padding: 6rem 0;
   .imgHolder {
     position: relative;
     aspect-ratio: 16/9;
-    background-color: teal;
+    /* background-color: teal; */
     margin-bottom: 4rem;
+    overflow: hidden;
     img {
       width: 100%;
       height: 100%;
+    }
+    .video {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
+    }
+    video {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 1;
     }
     .dim {
       display: flex;
@@ -36,6 +62,7 @@ const WorkItemDescCss = css`
         rgba(255, 255, 255, 0) 20%
       );
       padding: 2rem;
+      z-index: 2;
       .tag {
         display: flex;
         align-items: center;
@@ -68,7 +95,8 @@ const WorkItemDescCss = css`
       }
 
       .link {
-        a {
+        a,
+        button {
           min-width: 4rem;
           padding: 0.8rem 1.2rem;
           background-color: #000;
@@ -76,6 +104,7 @@ const WorkItemDescCss = css`
           border-radius: 4px;
           font-size: 1.5rem;
           font-weight: 500;
+          cursor: pointer;
         }
       }
     }
@@ -92,15 +121,34 @@ const WorkItemDescCss = css`
 `;
 
 function WorkItemDesc(props: Props) {
+  const [popup, setPopup] = useState(0);
   return (
     <>
       <div css={WorkItemDescCss}>
         <div className="imgHolder">
-          <img src="" alt={props.data.id} />
+          {props.data.img ? (
+            <img src="" alt={props.data.id} />
+          ) : (
+            // <div
+            //   className="video"
+            //   style={{
+            //     backgroundImage: "url(../../static/video/vodaplay_play.mp4)",
+            //   }}
+            // />
+            <>
+              <video muted autoPlay loop>
+                <source
+                  src={process.env.PUBLIC_URL + props.data.video}
+                  type="video/mp4"
+                />
+              </video>
+            </>
+          )}
+
           <div className="dim">
             <div className="tag">
               {props.data.tag.map((item) => {
-                return <span>{item}</span>;
+                return <span key={item}>{item}</span>;
               })}
             </div>
           </div>
@@ -115,11 +163,30 @@ function WorkItemDesc(props: Props) {
                 <a href={props.data.link} target="_blank">
                   Go WebSite
                 </a>
-              ) : null}
+              ) : // <button
+              //   type="button"
+              //   onClick={() => {
+              //     props.onClickPopup();
+              //     setPopup(1);
+              //   }}
+              // >
+              //   Demo Video
+              // </button>
+              null}
             </div>
           </article>
         </div>
       </div>
+      {popup === 1 && (
+        <PopupComponents onClickClose={() => setPopup(0)}>
+          <video muted autoPlay loop>
+            <source
+              src={process.env.PUBLIC_URL + props.data.video}
+              type="video/mp4"
+            />
+          </video>
+        </PopupComponents>
+      )}
     </>
   );
 }

@@ -18,6 +18,19 @@ const Init = css`
     unicode-range: U+0041-005A, U+0061-007A, U+0030-0039;
   }
 
+  /* #root {
+    overflow: overlay;
+  }
+
+  #root::-webkit-scrollbar {
+    width: 1vw;
+  }
+
+  #root::-webkit-scrollbar-thumb {
+    background-color: hsla(0, 0%, 42%, 0.49);
+    border-radius: 100px;
+  } */
+
   html {
     font-size: 62.5%;
     transition: font-size 0.21s;

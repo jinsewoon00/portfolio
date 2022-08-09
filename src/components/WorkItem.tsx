@@ -124,7 +124,10 @@ function WorkItem(props: WorkItemProps) {
       <div css={WorkItemCss}>
         <div className="imgHolder">
           <Link to={`/detail/${props.data.id}&idx=${props.index}`}>
-            <img src={props.data.img} alt={props.data.title} />
+            <img
+              src={process.env.PUBLIC_URL + props.data.img}
+              alt={props.data.title}
+            />
           </Link>
         </div>
         <div className="desc">
