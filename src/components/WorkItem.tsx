@@ -142,7 +142,7 @@ function WorkItem(props: WorkItemProps) {
             <li>
               <p>
                 <i>🕓</i> <span>작업 기간</span>
-                <span>{props.data.duration} Days</span>
+                <span>{props.data.duration} Weeks</span>
               </p>
             </li>
           </ul>

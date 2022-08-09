@@ -27,6 +27,7 @@ const WorkItemDescCss = css`
     img {
       width: 100%;
       height: 100%;
+      object-fit: cover;
     }
     .video {
       width: 100%;
@@ -127,7 +128,10 @@ function WorkItemDesc(props: Props) {
       <div css={WorkItemDescCss}>
         <div className="imgHolder">
           {props.data.img ? (
-            <img src="" alt={props.data.id} />
+            <img
+              src={process.env.PUBLIC_URL + props.data.img}
+              alt={props.data.id}
+            />
           ) : (
             // <div
             //   className="video"
